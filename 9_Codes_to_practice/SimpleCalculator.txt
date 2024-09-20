@@ -1,0 +1,488 @@
+
+1) Code for Menu Driven Simple Calculator : 
+
+import java.io.*;
+
+class SimpleCalculator{
+
+	public static void addNumbers(int a, int b){
+		System.out.println(a+" + "+b+" = "+(a+b));
+	}
+
+	public static void substractNumbers(int a, int b){
+		System.out.println(a+" - "+b+" = "+(a-b));
+	}
+
+	public static void multiplyNumbers(int a, int b){
+		System.out.println(a+" * "+b+" = "+(a*b));
+	}
+
+	public static void divideNumbers(int a, int b){
+		System.out.println(a+" / "+b+" = "+(a/b));
+	}
+
+	public static void main (String...args) throws IOException{
+		
+		int valueOne;
+		int valueTwo;
+		int operation;
+		int flag;
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		do{
+			System.out.println("Enter first value");
+			valueOne = Integer.parseInt(br.readLine());
+			System.out.println("Enter second value");
+			valueTwo = Integer.parseInt(br.readLine());
+
+			System.out.println("Choose following option according to Calculation you want to perform \n1 for Addition\n2 for Substraction\n3 for Multiplication\n4 for Division");
+
+			operation = Integer.parseInt(br.readLine());
+			if(operation == 1){
+				addNumbers(valueOne, valueTwo);
+			}else if(operation == 2){
+				substractNumbers(valueOne, valueTwo);
+			}else if(operation == 3){
+				multiplyNumbers(valueOne, valueTwo);
+			}else if(operation == 4){
+				divideNumbers(valueOne, valueTwo);
+			}else{
+				System.out.println("You are performing wrong operation");
+			}
+
+			System.out.println("Enter 1 to countinue operation else press 0");
+
+			flag = Integer.parseInt(br.readLine());
+		}while(flag == 1);
+	}
+}
+
+
+Out put for Menu driven Simple Calculator : 
+
+Microsoft Windows [Version 10.0.19045.4894]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\Vinsys\HW\9_Codes_to_practice>javac SimpleCalculator.java
+
+D:\Vinsys\HW\9_Codes_to_practice>java SimpleCalculator
+Enter first value
+10
+Enter second value
+3
+Choose following option according to Calculation you want to perform
+1 for Addition
+2 for Substraction
+3 for Multiplication
+4 for Division
+3
+10 * 3 = 30
+Enter 1 to countinue operation else press 0
+1
+Enter first value
+60
+Enter second value
+30
+Choose following option according to Calculation you want to perform
+1 for Addition
+2 for Substraction
+3 for Multiplication
+4 for Division
+2
+60 - 30 = 30
+Enter 1 to countinue operation else press 0
+0
+
+D:\Vinsys\HW\9_Codes_to_practice>
+
+
+
+
+
+2) Code for Finding out Prime numbers from 1 to 100 : 
+
+import java.io.*;
+
+class PrimeNumber{
+	public static void main(String...args)throws IOException{
+
+		boolean flag;
+
+		for(int i = 2; i<=100; i++){
+			flag = true;
+			for(int j = 2; j<(i/2)+1; j++){
+				if((i%j) == 0){
+					flag = false;
+					break;
+				}
+			}
+			if(flag == true){
+				System.out.println(i);
+			}
+		}
+	}
+}
+
+
+Output for Code for Finding out Prime numbers from 1 to 100 : 
+
+D:\Vinsys\HW\9_Codes_to_practice>javac PrimeNumber.java
+D:\Vinsys\HW\9_Codes_to_practice>java PrimeNumber
+2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+53
+59
+61
+67
+71
+73
+79
+83
+89
+97
+D:\Vinsys\HW\9_Codes_to_practice>
+
+
+
+
+
+3) Code for Perfect Number : 
+
+import java.io.*;
+
+class PerfectNumber{
+	public static void main(String...args)throws IOException{
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int value;
+		int sum = 0;
+
+		System.out.println("Enter a number to check if it is a perfect number or not");
+
+		value = Integer.parseInt(br.readLine());
+
+		for(int i = 1; i<(value/2)+1; i++){
+			if ((value % i) == 0){
+				sum = sum+i;
+			}
+		}
+
+		if(sum == value){
+			System.out.println("Given number "+value+" is a perfect number");
+		}else {
+			System.out.println("Given number "+value+" is not a perfect number");
+		}
+	}
+}
+
+
+Output of Perfect Number : 
+
+D:\Vinsys\HW\9_Codes_to_practice>javac PerfectNumber.java
+
+D:\Vinsys\HW\9_Codes_to_practice>java PerfectNumber
+Enter a number to check if it is a perfect number or not
+28
+Given number 28 is a perfect number
+
+D:\Vinsys\HW\9_Codes_to_practice>java PerfectNumber
+Enter a number to check if it is a perfect number or not
+47
+Given number 47 is not a perfect number
+
+D:\Vinsys\HW\9_Codes_to_practice>java PerfectNumber
+Enter a number to check if it is a perfect number or not
+496
+Given number 496 is a perfect number
+
+D:\Vinsys\HW\9_Codes_to_practice>java PerfectNumber
+Enter a number to check if it is a perfect number or not
+490
+Given number 490 is not a perfect number
+
+D:\Vinsys\HW\9_Codes_to_practice>
+
+
+
+
+
+4) Code to check if given number is Palindrome or not : 
+
+import java.io.*;
+
+class PalindromeNumber{
+	public static void main (String...args)throws IOException{
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int value;
+		int copy;
+		int count = 0;
+		int paste = 0;
+
+		System.out.println("Enter a number to check if that number is palindrome or not");
+
+		value = Integer.parseInt(br.readLine());
+		copy = value;
+
+		while(copy != 0){
+			paste = paste * 10 + (copy%10);
+			copy = copy / 10;
+		}
+
+		if(value == paste){
+			System.out.println("Above number "+value+" is palindrome");
+		}else{
+			System.out.println("Above number "+value+" is not a palindrome");
+		}
+
+	}
+}
+
+
+Output of Code to check if given number is Palindrome or not : 
+
+D:\Vinsys\HW\9_Codes_to_practice>javac PalindromeNumber.java
+
+D:\Vinsys\HW\9_Codes_to_practice>java PalindromeNumber
+Enter a number to check if that number is palindrome or not
+12321
+Above number 12321 is palindrome
+
+D:\Vinsys\HW\9_Codes_to_practice>java PalindromeNumber
+Enter a number to check if that number is palindrome or not
+23455432
+Above number 23455432 is palindrome
+
+D:\Vinsys\HW\9_Codes_to_practice>java PalindromeNumber
+Enter a number to check if that number is palindrome or not
+5643
+Above number 5643 is not a palindrome
+
+D:\Vinsys\HW\9_Codes_to_practice>java PalindromeNumber
+Enter a number to check if that number is palindrome or not
+5765675
+Above number 5765675 is palindrome
+
+D:\Vinsys\HW\9_Codes_to_practice>
+
+
+
+
+
+5) Code to find out Fibonacci Series till N^th Number : 
+
+import java.io.*;
+
+class FibonacciSeries{
+	public static void main (String...args)throws IOException{
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int value;
+		int num1;
+		int num2;
+
+		System.out.println("Enter a number greater than 2");
+
+		value = Integer.parseInt(br.readLine());
+
+		num1 = 1;
+		num2 = 1;
+
+		System.out.print(" 1, "+"1, ");
+
+		while (num2<value){
+			num2 = num1 + num2;
+			num1 = num2 - num1;
+			if(num2>value){
+				break;
+			}
+			System.out.print(num2+", ");
+		}
+	}
+}
+
+
+Output for Code to find out Fibonacci Series till N^th Number : 
+
+
+D:\Vinsys\HW\10_Code_to_practice>javac FibonacciSeries.java
+
+D:\Vinsys\HW\10_Code_to_practice>java FibonacciSeries
+Enter a number greater than 2
+8
+ 1, 1, 2, 3, 5, 8,
+D:\Vinsys\HW\10_Code_to_practice>java FibonacciSeries
+Enter a number greater than 2
+90
+ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
+D:\Vinsys\HW\10_Code_to_practice>
+
+
+
+
+
+
+6) Code for finding out the factorial of number :
+
+import java.io.*;
+
+class Factorial{
+	public static void main(String...args)throws IOException{
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int value;
+		int sum = 1;
+
+		System.out.println("Enter a number to find its factorial");
+
+		value = Integer.parseInt(br.readLine());
+
+		if(value != 0){
+			for(int i = 1; i<=value; i++){
+				sum = sum * i;
+			}
+			System.out.println(value+"! is "+ sum);
+		}else if(value==0){
+			System.out.println("0! is 1");
+		}
+	}
+}
+
+
+Output for the Code for finding out the factorial of number :
+
+
+D:\Vinsys\HW\10_Code_to_practice>javac Factorial.java
+
+D:\Vinsys\HW\10_Code_to_practice>java Factorial
+Enter a number to find its factorial
+8
+8! is 40320
+
+D:\Vinsys\HW\10_Code_to_practice>java Factorial
+Enter a number to find its factorial
+23
+23! is 862453760
+
+D:\Vinsys\HW\10_Code_to_practice>java Factorial
+Enter a number to find its factorial
+2
+2! is 2
+
+D:\Vinsys\HW\10_Code_to_practice>java Factorial
+Enter a number to find its factorial
+0
+0! is 1
+
+D:\Vinsys\HW\10_Code_to_practice>
+
+
+
+
+
+7) Code for finding out if number is ArmStrong or not : 
+
+import java.io.*;
+
+class ArmStrongNumber{
+	public static void main(String...args)throws IOException{
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int value = 0;
+		int copy = value;
+		int count = 0;
+		int sum = 0;
+		int rem;
+		int copy2;
+		int num = 0;
+		int num2;
+		boolean flag = false;
+
+		System.out.println("Enter a number to check if it is a Armstrong number or not");
+
+		value = Integer.parseInt(br.readLine());
+		copy = value;
+
+		while(copy!=0){
+			copy = copy / 10;
+			count++;
+		}
+
+		copy = value;
+
+		while(copy!=0){
+			rem = copy % 10;
+			copy = copy / 10;
+			copy2 = rem;
+			num2 = rem;
+
+			for(int i = 1; i<count; i++){
+				num2 = num2 * copy2;
+			}
+
+			num = num + num2;
+		}
+
+		if(num == value){
+			flag = true;
+		}
+
+		if(flag == true){
+			System.out.println("Entered number "+num+" is ArmStrong number");
+		}else{
+			System.out.println("Entered number "+value+" is not a ArmStrong number");
+		}
+	}
+}
+
+
+Output for Code for finding out if number is ArmStrong or not :
+
+
+D:\Vinsys\HW\10_Code_to_practice>javac ArmStrongNumber.java
+
+D:\Vinsys\HW\10_Code_to_practice>java ArmStrongNumber
+Enter a number to check if it is a Armstrong number or not
+370
+Entered number 370 is ArmStrong number
+
+D:\Vinsys\HW\10_Code_to_practice>java ArmStrongNumber
+Enter a number to check if it is a Armstrong number or not
+371
+Entered number 371 is ArmStrong number
+
+D:\Vinsys\HW\10_Code_to_practice>java ArmStrongNumber
+Enter a number to check if it is a Armstrong number or not
+345
+Entered number 345 is not a ArmStrong number
+
+D:\Vinsys\HW\10_Code_to_practice>java ArmStrongNumber
+Enter a number to check if it is a Armstrong number or not
+1634
+Entered number 1634 is ArmStrong number
+
+D:\Vinsys\HW\10_Code_to_practice>java ArmStrongNumber
+Enter a number to check if it is a Armstrong number or not
+1872
+Entered number 1872 is not a ArmStrong number
+
+D:\Vinsys\HW\10_Code_to_practice>
